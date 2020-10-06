@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "168223e7e5ac7c88ba7c4adbf1ae90c3",
+    "content-hash": "95ebe5f6f44293cd552b043e134dc9d3",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7850,7 +7850,7 @@
         },
         {
             "name": "symfony/web-server-bundle",
-            "version": "v4.4.15",
+            "version": "v4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-server-bundle.git",
