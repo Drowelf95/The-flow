@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/mediaq.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('fonts/Fontawesome/css/all.css') }}" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 bo-menu">
+                    
+                    <div class="bo-menu-title">
+                        <a href="login">
+                            <h1>THE FLOW</h1>
+                            <p>By Johan SUTTER</p>
+                        </a>
+                    </div>
+                    
+                    <p>Welcome to your back office you beautiful.</p>
+                    <ul class="list-group bo-menu-summary">
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-home"></i>Home</a>
+                        <a href="#" class="list-group-item list-group-item-action active"><i class="fas fa-eye"></i>Segments view</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-hammer"></i>Spash page edition</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-id-badge"></i>Profil</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled"><i class="fas fa-door-open"></i>Log Out</a>
+                    </ul>
+
+                    <img src="{{ asset('img/myPeeps3.png') }}" alt="Image Cadenas géant avec deux personnes de chaque côté">
+
+                    <p class="bo-login-artDisclaimer"> Art created on <a href="https://www.openpeeps.com/">Open Peeps</a></p>
+
+                </div>
+
+                <div class="col bo-content">
+                        {% block body %}{% endblock %}
+                </div>
+            </div>
+       </div>
+
+        {% block javascripts %}{% endblock %}
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

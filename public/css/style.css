@@ -1,0 +1,154 @@
+/* Back office */
+
+
+/* Login Sidebar */
+
+.bo-login-sideL,
+.bo-menu {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #B0C4DE;
+    height: 100vh;
+    padding: 30px;
+}
+
+.bo-login-sideL-title,
+.bo-menu-title {
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.bo-login-sideL-title a,
+.bo-menu-title a,
+.bo-menu-summary a {
+    color: black;
+}
+
+.bo-login-sideL-title a:hover,
+.bo-menu-title a:hover,
+.bo-menu-summary a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.bo-login-sideL h1,
+.bo-menu-title h1,
+.bo-segView-title h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.bo-login-sideL p,
+.bo-menu-title p,
+.bo-segView-title p {
+    margin: 0;
+}
+
+.bo-login-sideL-hero {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.bo-login-sideL img,
+.bo-menu img {
+    position: absolute;
+    width: 60%;
+    height: auto;
+    bottom: 60px;
+    right: 40px;
+}
+
+.bo-menu img {
+    width: 40%;
+}
+
+.bo-login-artDisclaimer {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+}
+
+
+/* Login container */
+
+.bo-login-sideR {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bo-login-conatiner {
+    padding: 30px 20px;
+    border-radius: 20px;
+}
+
+.bo-login-conatiner h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+/* Back office side menu */
+
+.bo-menu-summary a {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.bo-menu-summary a:hover {
+    font-weight: bold;
+}
+
+
+/* Back office content */
+
+.bo-content {
+    font-family: 'Share Tech Mono', monospace;
+    margin: 30px;
+}
+
+.bo-segView-title {
+    margin-bottom: 15px;
+}
+
+.bo-segView-group {
+    margin-top: 50px;
+}
+
+.bo-segView-row {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: #f3f3f3;
+}
+
+.bo-segView-row-text {
+    display: flex;
+    align-items: center;
+}
+
+.bo-segView-row h3,
+.bo-segView-row p {
+    margin: 0;
+}
+
+.bo-segView-row-title label {
+    margin-bottom: 5px;
+}
+
+
+/* Common */
+
+.test-bck {
+    background-color: hotpink;
+}
+
+i {
+    margin-right: 10px;
+}
+
+.text-sm {
+    font-size: 0.7rem;
+}
