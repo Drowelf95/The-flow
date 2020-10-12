@@ -9,6 +9,11 @@
         padding: 30px;
     }
     
+    .bo-menu {
+        position: fixed;
+        z-index: 9999;
+    }
+    
     .bo-login-sideL-title,
     .bo-menu-title {
         cursor: pointer;
@@ -112,10 +117,6 @@
         margin: 0 5px;
     }
     
-    .bo-segView-group {
-        margin-top: 50px;
-    }
-    
     .bo-segView-row {
         padding: 10px;
         border: 1px solid black;
@@ -145,6 +146,15 @@
     .bo-segView-btnGroup button {
         margin: 0 5px;
     }
+    
+    .bo-segView-title h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    
+    .bo-mediaOption {
+        margin-bottom: 16px;
+    }
     /* Common */
     
     .test-bck {
@@ -157,4 +167,17 @@
     
     .text-sm {
         font-size: 0.7rem;
+    }
+    
+    .dispNone {
+        display: none;
+    }
+    
+    header,
+    .bo-form-firstPart {
+        margin-bottom: 40px;
+    }
+    
+    .hiddenCol {
+        z-index: 0;
     }

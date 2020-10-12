@@ -1,30 +1,82 @@
 {% extends 'baseBO.html.twig' %}
 
-{% block title %}login BackController!{% endblock %}
+{% block title %}The flow | Segment Trash{% endblock %}
 
 {% block body %}
 
-<div class="bo-segView-title">
-    <h2>THE TRASH</h2>
-    <p>That's... Hum... Maybe... Yeah... </p>
-    <p class="text-sm">We won't talk about what's in here.</p>
-</div>
+<header>
+  <!-- Title -->
+  <div class="bo-segView-title">
+      <h2>THE TRASH</h2>
+      <p>That's... Hum... Maybe... Yeah... </p>
+      <p class="text-sm">We won't talk about what's in here.</p>
+  </div>
 
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
+  <!-- Alerts -->
+  <div class="dispNone">
+    <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
+    </div>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-    <div class="btn-group mr-2" role="group">
-        <form action="{{ path('segmentView') }}" method="GET">
-            <button type="submit" class="btn btn-secondary"><i class="fas fa-caret-square-left"></i>Go back</button>
-        </form>
+    <div class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
     </div>
-    <div class="btn-group mr-2" role="group">
-        <form action="#" method="GET">
-            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Empty trash</button>
-        </form>
+
+    <div class="alert alert-success" role="alert">
+        A simple success alert—check it out!
     </div>
-</div>
+    </div>
+
+  <!-- Buttons -->
+  <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group mr-2" role="group">
+          <form action="{{ path('segmentView') }}" method="GET">
+              <button type="submit" class="btn btn-secondary"><i class="fas fa-caret-square-left"></i>Go back</button>
+          </form>
+      </div>
+      <div class="btn-group mr-2" role="group">
+          <form action="#" method="GET">
+              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Empty trash</button>
+          </form>
+      </div>
+  </div>
+</header>
+
+<section>
+    <!-- Segment list -->
+    <div class="bo-segView-group">
+
+        <div class="bo-segView-row-title">
+            <div class="row">
+                <div class="col-4">
+                <label>Titles</label>
+                </div>
+                <div class="col-4">
+                <label>Last update</label>
+                </div>
+                <div class="col">
+                <label>Options</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="bo-segView-row">
+            <div class="row">
+                <div class="col bo-segView-row-text">
+                    <a href=""><h3>Titre</h3></a>
+                </div>
+                <div class="col bo-segView-row-text">
+                    <p>09/10/2020 17:02</p>
+                </div>
+                <div class="col-4">
+                    <div class="bo-segView-btnGroup">
+                        <button type="button" class="btn btn-success"><i class="fas fa-undo-alt"></i>Remove from trash</button>
+                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<section>
 
 {% endblock %}

@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/mediaq.css') }}" />
 
+        <link rel="icon" href="{{ asset('img/floppy.png') }}" />
+
         <link rel="stylesheet" href="{{ asset('fonts/Fontawesome/css/all.css') }}" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Share+Tech+Mono&display=swap" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
@@ -37,7 +39,7 @@
 
                     <!-- Image & credit -->
                     <img src="{{ asset('img/myPeeps3.png') }}" alt="Image Cadenas géant avec deux personnes de chaque côté">
-                    <p class="bo-login-artDisclaimer"> Art created on <a href="https://www.openpeeps.com/" target="_blank">Open Peeps</a></p>
+                    <p class="bo-login-artDisclaimer"> Art created on <a href="https://blush.design/fr" target="_blank">Blush</a></p>
 
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -65,6 +67,7 @@
                 </div>
 
                 <!-- content -->
+                <div class="col-2 hiddenCol"></div>
                 <div class="col bo-content">
                         {% block body %}{% endblock %}
                 </div>

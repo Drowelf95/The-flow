@@ -1,65 +1,92 @@
 {% extends 'baseBO.html.twig' %}
 
-{% block title %}login BackController!{% endblock %}
+{% block title %}The flow | Segment View{% endblock %}
 
 {% block body %}
 
-<div class="bo-segView-title">
-    <h2>THE SEGMENT VIEW</h2>
-    <p>This is the place where you can see EVERYTHING !</p>
-    <p class="text-sm">Except ghost... Definitely not ghost...</p>
-</div>
-
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
-
-<div class="btn-group" role="group" aria-label="Basic example">
-    <div class="btn-group mr-2" role="group">
-        <form action="{{ path('segmentAdd') }}" method="GET">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Add new</button>
-        </form>
+<header>
+    <!-- Title -->
+    <div class="bo-segView-title">
+        <h2>THE SEGMENT VIEW</h2>
+        <p>This is the place where you can see EVERYTHING !</p>
+        <p class="text-sm">Except ghost... Definitely not ghost...</p>
     </div>
-    <div class="btn-group mr-2" role="group">
-        <form action="{{ path('segmentTrash') }}" method="GET">
-            <button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Trash</button>
-        </form>
-    </div>
-</div>
 
-<div class="bo-segView-group">
+    <!-- Alerts -->
+    <div class="dispNone">
+        <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
+        </div>
 
-    <div class="bo-segView-row-title">
-        <div class="row">
-            <div class="col-4">
-            <label>Titles</label>
-            </div>
-            <div class="col-4">
-            <label>Last update</label>
-            </div>
-            <div class="col">
-            <label>Options</label>
-            </div>
+        <div class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
+        </div>
+
+        <div class="alert alert-success" role="alert">
+        A simple success alert—check it out!
         </div>
     </div>
 
-    <div class="bo-segView-row">
-        <div class="row">
-            <div class="col bo-segView-row-text">
-                <a href=""><h3>Titre</h3></a>
-            </div>
-            <div class="col bo-segView-row-text">
-                <p>09/10/2020 17:02</p>
-            </div>
-            <div class="col-4">
-                <div class="bo-segView-btnGroup">
-                    <button type="button" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
-                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
-                    <button type="button" class="btn btn-info"><i class="fas fa-binoculars"></i>View</button>
+    <!-- Buttons -->
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <div class="btn-group mr-2" role="group">
+            <form action="{{ path('segmentAdd') }}" method="GET">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Add new</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <form action="{{ path('segmentTrash') }}" method="GET">
+                <button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Trash</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<section>
+
+    <!-- Segment list -->
+    <div class="bo-segView-group">
+
+        <div class="bo-segView-row-title">
+            <div class="row">
+                <div class="col-4">
+                <label>Titles</label>
+                </div>
+                <div class="col-4">
+                <label>Last update</label>
+                </div>
+                <div class="col">
+                <label>Options</label>
                 </div>
             </div>
         </div>
+
+        {% for segment in segments %}
+            <div class="bo-segView-row">
+                <div class="row">
+                    <div class="col bo-segView-row-text">
+                        <a href=""><h3>{{ segment.title1}}</h3></a>
+                    </div>
+                    <div class="col bo-segView-row-text">
+                        <p>{{ segment.createdAt| date('d/m/Y')}} at {{ segment.createdAt| date('H:i')}}</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="bo-segView-btnGroup">
+                            <form action="{{ path('segmentEdit', {'id':segment.id}) }}" method="GET">
+                                <button type="submit" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
+                            </form>
+                            <form action="{{ path('segmentView') }}" method="GET">
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
+                            </form>
+                            <form action="{{ path('segmentView') }}" method="GET">
+                                <button type="submit" class="btn btn-info"><i class="fas fa-binoculars"></i>View</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-</div>
+<section>
 
 {% endblock %}
