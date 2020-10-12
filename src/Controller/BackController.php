@@ -56,14 +56,24 @@ class BackController extends AbstractController
             'controller_name' => 'BackController',
         ]);
     }
+
+        /**
+     * @Route("/segmentTrash", name="segmentTrash")
+     */
+    public function segmentTrash()
+    {
+        return $this->render('back/segmentTrash.html.twig', [
+            'controller_name' => 'BackController',
+        ]);
+    }
     
     /**
-     * @Route("/logOut", name="logOut")
+     * @Route("/profil", name="Profil")
      */
-    public function logOut()
+    public function profil()
     {
-        /*return $this->render('back/logOut.html.twig', [
+        return $this->render('back/Profil.html.twig', [
             'controller_name' => 'BackController',
-        ]);*/
+        ]);
     }
 }

@@ -14,8 +14,18 @@
   A simple primary alert—check it out!
 </div>
 
-<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i>Add new</button>
-<button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Corbeille</button>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <div class="btn-group mr-2" role="group">
+        <form action="{{ path('segmentAdd') }}" method="GET">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Add new</button>
+        </form>
+    </div>
+    <div class="btn-group mr-2" role="group">
+        <form action="{{ path('segmentTrash') }}" method="GET">
+            <button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Trash</button>
+        </form>
+    </div>
+</div>
 
 <div class="bo-segView-group">
 
@@ -35,17 +45,17 @@
 
     <div class="bo-segView-row">
         <div class="row">
-            <div class="col-4 bo-segView-row-text">
+            <div class="col bo-segView-row-text">
                 <a href=""><h3>Titre</h3></a>
             </div>
-            <div class="col-4 bo-segView-row-text">
+            <div class="col bo-segView-row-text">
                 <p>09/10/2020 17:02</p>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div class="bo-segView-btnGroup">
-                    <button type="button" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Modifier</button>
-                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Supprimer</button>
-                    <button type="button" class="btn btn-info"><i class="fas fa-binoculars"></i>Visualiser</button>
+                    <button type="button" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
+                    <button type="button" class="btn btn-info"><i class="fas fa-binoculars"></i>View</button>
                 </div>
             </div>
         </div>
