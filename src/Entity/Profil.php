@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ProfilRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
  */
-class Profil
+class Profil implements UserInterface
 {
     /**
      * @ORM\Id
@@ -24,6 +26,7 @@ class Profil
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long")
      */
     private $password;
 
@@ -31,6 +34,17 @@ class Profil
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long")
+     */
+    public $new_password;
+    
+    /**
+     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long")
+     * @Assert\EqualTo(propertyPath="new_password", message="The new password and confirmation password do not match")
+     */
+    public $confirm_password;
 
     public function getId(): ?int
     {
@@ -72,4 +86,13 @@ class Profil
 
         return $this;
     }
+
+    public function eraseCredentials() {}
+
+    public function getSalt() {}
+
+    public function getRoles() {
+        return ['ROLE_USER'];
+    }
+
 }

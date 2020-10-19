@@ -13,15 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class BackController extends AbstractController
 {
-    /**
-     * @Route("/login", name="Login")
-     */
-    public function Login()
-    {
-        return $this->render('back/Login.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
+
 
     /**
      * @Route("/splashPage", name="splashPage")
@@ -38,7 +30,7 @@ class BackController extends AbstractController
      */
     public function segmentView(SegmentsRepository $repo)
     {
-        $segments = $repo->findAll();
+        $segments = $repo->findBy(['deleted'=>false]);
 
         return $this->render('back/segmentView.html.twig', [
             'controller_name' => 'BackController',
@@ -86,23 +78,27 @@ class BackController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/segmentTrash", name="segmentTrash")
+        /**
+     * @Route("/segmentBin", name="segmentBin")
      */
-    public function segmentTrash()
+    public function segmentBin()
     {
-        return $this->render('back/segmentTrash.html.twig', [
+        return $this->render('back/segmentView.html.twig', [
             'controller_name' => 'BackController',
         ]);
     }
-    
+
     /**
-     * @Route("/profil", name="Profil")
+     * @Route("/segmentTrash", name="segmentTrash")
      */
-    public function profil()
+    public function segmentTrash(SegmentsRepository $repo)
     {
-        return $this->render('back/Profil.html.twig', [
+
+        $segments = $repo->findBy(['deleted'=>true]);
+
+        return $this->render('back/segmentTrash.html.twig', [
             'controller_name' => 'BackController',
+            'segments' => $segments
         ]);
     }
 }

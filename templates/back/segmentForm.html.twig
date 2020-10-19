@@ -48,19 +48,23 @@
     {{ form_start(formSegment) }}
     <div class="form-group">
       <label for="">Part number</label>
-      {{ form_widget(formSegment.part)}}
+      {{ form_errors(formSegment.part) }}
+      {{ form_widget(formSegment.part) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Title</label>
-      {{ form_widget(formSegment.title1)}}
+      {{ form_errors(formSegment.title1) }}
+      {{ form_widget(formSegment.title1) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Message</label>
-      {{ form_widget(formSegment.message1, {'attr' : {'rows': "10"}})}}
+      {{ form_errors(formSegment.message1) }}
+      {{ form_widget(formSegment.message1, {'attr' : {'rows': "10"}}) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Link to the video</label>
-      {{ form_widget(formSegment.link1, {'attr' : {'placeholder': "http://www.youtube.com"}})}}
+      {{ form_errors(formSegment.link1) }}
+      {{ form_widget(formSegment.link1, {'attr' : {'placeholder': "http://www.youtube.com"}}) }}
       <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the link here.</small>
     </div>
   </div>
@@ -74,11 +78,13 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1">Title</label>
-      {{ form_widget(formSegment.title2)}}
+      {{ form_errors(formSegment.title2) }}
+      {{ form_widget(formSegment.title2) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Message</label>
-      {{ form_widget(formSegment.message2, {'attr' : {'rows': "10"}})}}
+      {{ form_errors(formSegment.message2) }}
+      {{ form_widget(formSegment.message2, {'attr' : {'rows': "10"}}) }}
     </div>
     <div>
       <label for="exampleInputPassword1">Media Upload</label>
@@ -98,19 +104,23 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Select image 01</label>
-      {{ form_widget(formSegment.link_s1)}}
+      {{ form_errors(formSegment.link_s1) }}
+      {{ form_widget(formSegment.link_s1) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Select image 02</label>
-      {{ form_widget(formSegment.link_s2)}}
+      {{ form_errors(formSegment.link_s2) }}
+      {{ form_widget(formSegment.link_s2) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Select image 03</label>
-      {{ form_widget(formSegment.link_s3)}}
+      {{ form_errors(formSegment.link_s3) }}
+      {{ form_widget(formSegment.link_s3) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Select image</label>
-      {{ form_widget(formSegment.link2)}}
+      {{ form_errors(formSegment.link2) }}
+      {{ form_widget(formSegment.link2) }}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Link to video</label>

@@ -75,8 +75,8 @@
                             <form action="{{ path('segmentEdit', {'id':segment.id}) }}" method="GET">
                                 <button type="submit" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
                             </form>
-                            <form action="{{ path('segmentView') }}" method="GET">
-                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
+                            <form action="{{ path('segmentBin', {'id':segment.id}) }}" method="GET">
+                                <button type="submit" id="test" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
                             </form>
                             <form action="{{ path('segmentView') }}" method="GET">
                                 <button type="submit" class="btn btn-info"><i class="fas fa-binoculars"></i>View</button>

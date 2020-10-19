@@ -60,22 +60,24 @@
             </div>
         </div>
 
-        <div class="bo-segView-row">
-            <div class="row">
-                <div class="col bo-segView-row-text">
-                    <a href=""><h3>Titre</h3></a>
-                </div>
-                <div class="col bo-segView-row-text">
-                    <p>09/10/2020 17:02</p>
-                </div>
-                <div class="col-4">
-                    <div class="bo-segView-btnGroup">
-                        <button type="button" class="btn btn-success"><i class="fas fa-undo-alt"></i>Remove from trash</button>
-                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
+        {% for segment in segments %}
+            <div class="bo-segView-row">
+                <div class="row">
+                    <div class="col bo-segView-row-text">
+                        <a href=""><h3>{{ segment.title1}}</h3></a>
+                    </div>
+                    <div class="col bo-segView-row-text">
+                        <p>{{ segment.createdAt| date('d/m/Y')}} at {{ segment.createdAt| date('H:i')}}</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="bo-segView-btnGroup">
+                            <button type="button" class="btn btn-success"><i class="fas fa-undo-alt"></i>Remove from trash</button>
+                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 <section>
 
