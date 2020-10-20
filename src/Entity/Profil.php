@@ -26,7 +26,7 @@ class Profil implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long")
+     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long.")
      */
     private $password;
 
@@ -36,13 +36,14 @@ class Profil implements UserInterface
     private $createdAt;
 
     /**
-     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long")
+     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long.")
+     * @Assert\NotIdenticalTo(propertyPath="password", message="The new password must be different from the old one (come on...)")
      */
     public $new_password;
     
     /**
-     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long")
-     * @Assert\EqualTo(propertyPath="new_password", message="The new password and confirmation password do not match")
+     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long.")
+     * @Assert\EqualTo(propertyPath="new_password", message="The new password and confirmation password do not match.")
      */
     public $confirm_password;
 

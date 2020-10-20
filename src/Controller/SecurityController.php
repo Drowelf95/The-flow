@@ -14,11 +14,15 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/profil", name="Profil")
+     * @Route("/profil/{id}", name="Profil")
      */
-    public function profil(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
+    public function profil(Profil $profil = null, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
-        $profil = new Profil();
+        if(!$profil) 
+        {
+            $profil = new Profil(); 
+        }
+
         $form = $this->createForm(ProfilType::class, $profil);
 
         $form->handleRequest($request);
@@ -32,6 +36,8 @@ class SecurityController extends AbstractController
 
             $manager->persist($profil);
             $manager->flush();
+
+            return $this->redirectToRoute('segmentView');
         }
 
         return $this->render('security/Profil.html.twig', [
