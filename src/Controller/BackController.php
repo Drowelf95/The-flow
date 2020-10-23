@@ -78,14 +78,46 @@ class BackController extends AbstractController
         ]);
     }
 
-        /**
-     * @Route("/segmentBin", name="segmentBin")
+     /**
+     * @Route("/segmentBin/{id}", name="segmentBin")
      */
-    public function segmentBin()
+    public function segmentBin($id)
     {
-        return $this->render('back/segmentView.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $delete = $entityManager->getRepository(segments::class)->find($id);
+
+        $delete->setDeleted(true);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('segmentView');
+    }
+
+    /**
+     * @Route("/segmentRft/{id}", name="removeFromTrash")
+     */
+    public function removeFromTrash($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $remove = $entityManager->getRepository(segments::class)->find($id);
+
+        $remove->setDeleted(false);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('segmentTrash');
+    }
+
+    /**
+     * @Route("/segmentDft/{id}", name="deleteFromTrash")
+     */
+    public function deleteFromTrash($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $permDelete = $entityManager->getRepository(segments::class)->find($id);
+
+        $entityManager->remove($permDelete);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('segmentTrash');
     }
 
     /**
