@@ -13,33 +13,49 @@
   </div>
 
   <!-- Alerts -->
-  <div class="dispNone">
-    <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
+    {% block flash_messages %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    {{ message | raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
+
+    <!-- Buttons -->
+    <div class="btn-group mr-2" role="group">
+        <form action="{{ path('segmentView') }}" method="GET">
+            <button type="submit" class="btn btn-secondary"><i class="fas fa-caret-square-left"></i>Go back</button>
+        </form>
+    </div>
+    <div class="btn-group mr-2" role="group">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i>Empty trash</button>
     </div>
 
-    <div class="alert alert-danger" role="alert">
-        A simple danger alert—check it out!
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Delete all the segements</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You will empty the trash and delete everything ! be gentle.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form action="{{ path('TrashAll') }}" method="GET">
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="alert alert-success" role="alert">
-        A simple success alert—check it out!
-    </div>
-    </div>
-
-  <!-- Buttons -->
-  <div class="btn-group" role="group" aria-label="Basic example">
-      <div class="btn-group mr-2" role="group">
-          <form action="{{ path('segmentView') }}" method="GET">
-              <button type="submit" class="btn btn-secondary"><i class="fas fa-caret-square-left"></i>Go back</button>
-          </form>
-      </div>
-      <div class="btn-group mr-2" role="group">
-          <form action="#" method="GET">
-              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Empty trash</button>
-          </form>
-      </div>
-  </div>
 </header>
 
 <section>
@@ -71,12 +87,34 @@
                     </div>
                     <div class="col-4">
                         <div class="bo-segView-btnGroup">
-                        <form action="{{ path('removeFromTrash', {'id':segment.id}) }}" method="GET">
-                            <button type="submit" class="btn btn-success"><i class="fas fa-undo-alt"></i>Remove from trash</button>
-                        </form>
-                        <form action="{{ path('deleteFromTrash', {'id':segment.id}) }}" method="GET">
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
-                        </form>
+                            <form action="{{ path('removeFromTrash', {'id':segment.id}) }}" method="GET">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-undo-alt"></i>Remove from trash</button>
+                            </form>
+
+                            <button type="button" class="btn btn-danger "data-toggle="modal" data-target="#staticBackdrop2"><i class="fas fa-trash-alt"></i>Delete</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Delete segement</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            You will permanently delete this segment ! Are you sure ? Really sure ? Really really sure ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form action="{{ path('deleteFromTrash', {'id':segment.id}) }}" method="GET">
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

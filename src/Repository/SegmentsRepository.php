@@ -21,20 +21,18 @@ class SegmentsRepository extends ServiceEntityRepository
 
     // /**
     //  * @return Segments[] Returns an array of Segments objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    // */
+    // public function findByExampleField($value)
+    // {
+    //     return $this->createQueryBuilder('s')
+    //         ->andWhere('s.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->orderBy('s.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
     /*
     public function findOneBySomeField($value): ?Segments

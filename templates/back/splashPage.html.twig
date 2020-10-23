@@ -13,39 +13,44 @@
   </div>
 
   <!-- Alerts -->
-  <div class="dispNone">
-    <div class="alert alert-primary" role="alert">
-      A simple primary alert—check it out!
-    </div>
-
-    <div class="alert alert-danger" role="alert">
-      A simple danger alert—check it out!
-    </div>
-
-    <div class="alert alert-success" role="alert">
-      A simple success alert—check it out!
-    </div>
-  </div>
+    {% block flash_messages %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    {{ message | raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
 </header>
 
 <section>
-  <form class="bo-form-firstPart">
+{% for lastUpdate in update %}
+  <p>Last update : {{ lastUpdate.createdAt| date('d/m/Y')}} at {{ lastUpdate.createdAt| date('H:i')}}</p>
+{% endfor %}
+
+  {{ form_start(form) }}
     <div class="form-group">
-      <label for="exampleInputEmail1">Website Title</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <small id="emailHelp" class="form-text text-muted">This will also be displayed in the navigator's tab.</small>
+      <label>Website Title</label>
+      {{ form_errors(form.Title) }}
+      {{ form_widget(form.Title)}}
+      <small class="form-text text-muted">This will also be displayed in the navigator's tab.</small>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Message</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <label>Message</label>
+      {{ form_errors(form.Message) }}
+      {{ form_widget(form.Message)}}
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Link to the video</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <label>Link to the video</label>
+      {{ form_errors(form.Link) }}
+      {{ form_widget(form.Link)}}
       <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the link here.</small>
     </div>
     <button type="submit" class="btn btn-primary">Publish</button>
-  </form>
+  {{ form_end(form)}}
+
 </section>
 
 {% endblock %}

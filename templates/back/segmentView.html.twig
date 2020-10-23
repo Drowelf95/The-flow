@@ -13,19 +13,18 @@
     </div>
 
     <!-- Alerts -->
-    <div class="dispNone">
-        <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
-        </div>
+    {% block flash_messages %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    {{ message | raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
 
-        <div class="alert alert-danger" role="alert">
-        A simple danger alert—check it out!
-        </div>
-
-        <div class="alert alert-success" role="alert">
-        A simple success alert—check it out!
-        </div>
-    </div>
+    {# </div> #}
 
     <!-- Buttons -->
     <div class="btn-group" role="group" aria-label="Basic example">
@@ -34,11 +33,13 @@
                 <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Add new</button>
             </form>
         </div>
+        {% if trash == true %}
         <div class="btn-group mr-2" role="group">
             <form action="{{ path('segmentTrash') }}" method="GET">
                 <button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Trash</button>
             </form>
         </div>
+        {% endif %}
     </div>
 </header>
 
@@ -75,9 +76,32 @@
                             <form action="{{ path('segmentEdit', {'id':segment.id}) }}" method="GET">
                                 <button type="submit" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
                             </form>
-                            <form action="{{ path('segmentBin', {'id':segment.id}) }}" method="GET">
-                                <button type="submit" id="test" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</button>
-                            </form>
+
+                            <button type="button" class="btn btn-danger "data-toggle="modal" data-target="#staticBackdrop2"><i class="fas fa-trash-alt"></i>Delete</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Delete segement</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            You do realise that you will put in the trash all the work and effort you have put in this segment ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form action="{{ path('segmentBin', {'id':segment.id}) }}" method="GET">
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <form action="{{ path('segmentView') }}" method="GET">
                                 <button type="submit" class="btn btn-info"><i class="fas fa-binoculars"></i>View</button>
                             </form>

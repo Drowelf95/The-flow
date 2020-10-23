@@ -15,19 +15,16 @@
   </div>
 
   <!-- Alerts -->
-  <div class="dispNone">
-    <div class="alert alert-primary" role="alert">
-      A simple primary alert—check it out!
-    </div>
-
-    <div class="alert alert-danger" role="alert">
-      A simple danger alert—check it out!
-    </div>
-
-    <div class="alert alert-success" role="alert">
-      A simple success alert—check it out!
-    </div>
-  </div>
+    {% block flash_messages %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    {{ message | raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
 
   <!-- Buttons -->
   <form action="{{ path('segmentView') }}" method="GET">
@@ -89,49 +86,56 @@
     <div>
       <label for="exampleInputPassword1">Media Upload</label>
     </div>
-    <div class="bo-mediaOption">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-          <input type="radio" name="options" id="option1" checked> Image
-        </label>
-        <label class="btn btn-secondary">
-         <input type="radio" name="options" id="option2"> Slider
-        </label>
-        <label class="btn btn-secondary">
-          <input type="radio" name="options" id="option3"> Video
-        </label>
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-slider-tab" data-toggle="pill" href="#pills-slider" role="tab" aria-controls="pills-slider" aria-selected="false">Slider</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab" aria-controls="pills-images" aria-selected="false">Image</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Link to video</label>
+          <!-- Set up field -->
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-slider-tab">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Select image 01</label>
+          {{ form_errors(formSegment.link_s1) }}
+          {{ form_widget(formSegment.link_s1) }}
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Select image 02</label>
+          {{ form_errors(formSegment.link_s2) }}
+          {{ form_widget(formSegment.link_s2) }}
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Select image 03</label>
+          {{ form_errors(formSegment.link_s3) }}
+          {{ form_widget(formSegment.link_s3) }}
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Select image</label>
+          {{ form_errors(formSegment.link2) }}
+          {{ form_widget(formSegment.link2) }}
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Select image 01</label>
-      {{ form_errors(formSegment.link_s1) }}
-      {{ form_widget(formSegment.link_s1) }}
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Select image 02</label>
-      {{ form_errors(formSegment.link_s2) }}
-      {{ form_widget(formSegment.link_s2) }}
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Select image 03</label>
-      {{ form_errors(formSegment.link_s3) }}
-      {{ form_widget(formSegment.link_s3) }}
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Select image</label>
-      {{ form_errors(formSegment.link2) }}
-      {{ form_widget(formSegment.link2) }}
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Link to video</label>
-      <!-- Set up field -->
-    </div>
-    
-      {% if editMode  %}
-        <button type="submit" class="btn btn-warning">Edit</button>
-      {% else %}
-        <button type="submit" class="btn btn-success">Publish</button>
-      {% endif%}
+
+    {% if editMode  %}
+      <button type="submit" class="btn btn-warning">Edit</button>
+    {% else %}
+      <button type="submit" class="btn btn-success">Publish</button>
+    {% endif%}
   {{ form_end(formSegment)}}
 
 {% endblock %}
