@@ -80,7 +80,7 @@
             <div class="bo-segView-row">
                 <div class="row">
                     <div class="col bo-segView-row-text">
-                        <a href=""><h3>{{ segment.title1}}</h3></a>
+                        <h3>{{ segment.title1}}</h3>
                     </div>
                     <div class="col bo-segView-row-text">
                         <p>{{ segment.createdAt| date('d/m/Y')}} at {{ segment.createdAt| date('H:i')}}</p>
@@ -91,10 +91,10 @@
                                 <button type="submit" class="btn btn-success"><i class="fas fa-undo-alt"></i>Remove from trash</button>
                             </form>
 
-                            <button type="button" class="btn btn-danger "data-toggle="modal" data-target="#staticBackdrop2"><i class="fas fa-trash-alt"></i>Delete</button>
+                            <button type="button" class="btn btn-danger "data-toggle="modal" data-target="#staticBackdrop{{ segment.id }}"><i class="fas fa-trash-alt"></i>Delete</button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal fade" id="staticBackdrop{{ segment.id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
