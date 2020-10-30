@@ -31,14 +31,14 @@
                     <p>Welcome to your back office you beautiful.</p>
                     <ul class="list-group bo-menu-summary">
                         <a href="/" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-home"></i>Front page</a>
-                        <a href="{{ path('splashPage', { 'id': 5 }) }}" class="list-group-item list-group-item-action"><i class="fas fa-tint"></i>Spash page</a>
+                        <a href="{{ path('splashPage', { 'id': 5 }) }}" class="list-group-item list-group-item-action"><i class="fas fa-tint"></i>Splash screen</a>
                         <a href="{{ path('segmentView') }}" class="list-group-item list-group-item-action"><i class="fas fa-eye"></i>Segments view</a>
                         <a href="{{ path('Profil', { 'id': 13 }) }}" class="list-group-item list-group-item-action"><i class="fas fa-id-badge"></i>Profil</a>
                         <a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-door-open"></i>Log Out</a>
                     </ul>
 
                     <!-- Image & credit -->
-                    <img src="{{ asset('img/myPeeps3.png') }}" alt="Image Cadenas géant avec deux personnes de chaque côté">
+                    <img src="{{ asset('img/blush02.png') }}" alt="Image plante">
                     <p class="bo-login-artDisclaimer"> Art created on <a href="https://blush.design/fr" target="_blank">Blush</a></p>
 
                     <!-- Modal -->
@@ -74,10 +74,19 @@
             </div>
        </div>
 
-        {% block javascripts %}{% endblock %}
-        
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+        {% block javascripts %}
+            <script>
+                $('.custom-file-input').on('change', function(event) {
+                    var inputFile = event.currentTarget;
+                    $(inputFile).parent()
+                        .find('.custom-file-label')
+                        .html(inputFile.files[0].name);
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>

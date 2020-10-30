@@ -7,11 +7,14 @@ use App\Entity\Segments;
 
 use App\Form\SplashType;
 
+use App\Form\SegmentType;
 use App\Repository\SplashRepository;
 use App\Repository\SegmentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -81,35 +84,52 @@ class BackController extends AbstractController
      * @Route("/segmentAdd", name="segmentAdd")
      * @Route("/segmentEdit/{id}", name="segmentEdit")
      */
-    public function segmentForm(Segments $segments = null, Request $request, EntityManagerInterface $manager)
+    public function segmentForm(Segments $segments = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger)
     {
         if(!$segments) {
         $segments = new Segments(); 
         }
 
-        $form = $this->createFormBuilder($segments)
-                    ->add('part', TextType::class)
-                    ->add('title1', TextType::class)
-                    ->add('message1', TextareaType::class)
-                    ->add('link1', TextType::class)
-                    ->add('title2', TextType::class)
-                    ->add('message2', TextareaType::class)
-                    ->add('link2', TextType::class, ['required'=>false])
-                    ->add('link_s1', TextType::class, ['required'=>false])
-                    ->add('link_s2', TextType::class, ['required'=>false])
-                    ->add('link_s3', TextType::class, ['required'=>false])
-                    ->getForm();
+        $form = $this->createForm(SegmentType::class, $segments);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) 
         {
+            /** @var UploadedFile $link1 */
+            $link1 = $form->get('link_s1')->getData();
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($link1) {
+                $originalFilename = pathinfo($link1->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$link1->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $link1->move(
+                        $this->getParameter('links_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $segments->setlinkS1($newFilename);
+            }
+
             $segments->setCreatedAt(new \DateTime());
             $segments->setDeleted(false);
             $manager->persist($segments);
             $manager->flush();
 
-            return $this->redirectToRoute('segmentView');
+            $this->addFlash(
+                'success',
+                'Your segment have been updeated.'
+            );
+
+            return $this->redirect($request->getUri());
         }
         
         return $this->render('back/segmentForm.html.twig', [

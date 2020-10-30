@@ -19,7 +19,7 @@ class Segments
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="text")
      * @Assert\Length(max=2)
      */
     private $part;
@@ -37,7 +37,6 @@ class Segments
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Url()
      */
     private $link1;
 
@@ -48,7 +47,6 @@ class Segments
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=5, max=255)
      */
     private $message2;
 
@@ -82,17 +80,22 @@ class Segments
      */
     private $deleted;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $link3;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPart(): ?int
+    public function getPart(): ?string
     {
         return $this->part;
     }
 
-    public function setPart(int $part): self
+    public function setPart(string $part): self
     {
         $this->part = $part;
 
@@ -227,6 +230,18 @@ class Segments
     public function setDeleted(bool $deleted): self
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    public function getLink3(): ?string
+    {
+        return $this->link3;
+    }
+
+    public function setLink3(?string $link3): self
+    {
+        $this->link3 = $link3;
 
         return $this;
     }

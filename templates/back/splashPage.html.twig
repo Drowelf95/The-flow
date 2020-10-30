@@ -43,10 +43,10 @@
       {{ form_widget(form.Message)}}
     </div>
     <div class="form-group">
-      <label>Link to the video</label>
+      <label>ID of the youtube video</label>
       {{ form_errors(form.Link) }}
       {{ form_widget(form.Link)}}
-      <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the link here.</small>
+      <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the ID here.</small>
     </div>
     <button type="submit" class="btn btn-primary">Publish</button>
   {{ form_end(form)}}

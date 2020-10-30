@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Profil;
 use App\Form\ProfilType;
 
+use App\Repository\SplashRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,10 +50,14 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="Login")
      */
-    public function Login()
+    public function Login(SplashRepository $repo)
     {
+
+        $splash = $repo->findAll();
+        
         return $this->render('security/Login.html.twig', [
             'controller_name' => 'BackController',
+            'splash' => $splash
         ]);
     }
 

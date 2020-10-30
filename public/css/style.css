@@ -175,6 +175,25 @@
     margin-bottom: 16px;
 }
 
+.bo-mediaPreview {
+    display: flex;
+    justify-content: center;
+}
+
+.bo-media-grid {
+    text-align: center;
+    padding: 0 30px;
+    display: flex;
+    width: auto;
+    flex-direction: column;
+}
+
+.bo-mediaPreview img {
+    padding: 10px;
+    height: 100px;
+    width: auto;
+}
+
 
 /* Spash page */
 
@@ -183,20 +202,6 @@
     display: flex;
     align-items: center;
     color: #FFF;
-}
-
-.video-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.video-wrap video {
-    min-width: 100%;
-    min-height: 100%;
 }
 
 .overlay {
@@ -234,7 +239,7 @@ h1 {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 100px;
+    height: 50px;
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -244,8 +249,139 @@ h1 {
 
 .scroll-line {
     height: 100%;
-    width: 2px;
+    width: 1px;
     background-color: white;
+}
+
+
+/* Dividers */
+
+.divider {
+    height: 60vh;
+    position: relative;
+    justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #141414;
+}
+
+.divider h4 {
+    position: absolute;
+    font-family: 'RegularBrush';
+    top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.divider p {
+    text-align: center;
+    font-size: 2rem;
+    margin-right: 50px;
+}
+
+.divider h3 {
+    font-size: 15rem;
+    font-weight: bold;
+}
+
+
+/* First part */
+
+.fv-fpart {
+    position: relative;
+    justify-content: center;
+    align-items: unset;
+    flex-direction: column;
+    color: white;
+    padding: 70px 0;
+}
+
+.fv-fpart h2 {
+    position: absolute;
+    font-family: 'RegularBrush';
+    font-weight: bold;
+    top: 70px;
+    left: 50px;
+    font-size: 6rem;
+}
+
+.fv-fpart-message {
+    position: absolute;
+    top: 200px;
+    left: 50px;
+    width: 50%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+
+/* Second part */
+
+.scroll-wrapper-top {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scroll-line-top {
+    height: 100%;
+    width: 1px;
+    background-color: black;
+}
+
+.fv-spart {
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    color: black;
+    padding: 70px 0;
+}
+
+.fv-spart-message {
+    display: flex;
+    justify-content: center;
+}
+
+.column-wrap {
+    width: 50%;
+    padding: 50px;
+    column-count: 2;
+}
+
+.fv-spart-mVideo iframe {
+    border: 20px solid lightgrey;
+    border-radius: 10px;
+}
+
+.fv-spart-mSlider {
+    width: 50%;
+    height: auto;
+    border: 20px solid lightgrey;
+    border-radius: 10px;
+}
+
+
+/* Footer */
+
+.footer {
+    height: 20vh;
+    position: relative;
+    justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #141414;
+}
+
+.footer h3 {
+    font-family: 'RegularBrush';
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 0 30px;
 }
 
 
@@ -274,4 +410,97 @@ header,
 
 .hiddenCol {
     z-index: 0;
+}
+
+
+/* Full screen Background Vid */
+
+* {
+    box-sizing: border-box;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-foreground,
+.video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#vidtop-content {
+    top: 0;
+    color: #fff;
+}
+
+.vid-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 33%;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 1rem;
+    font-family: Avenir, Helvetica, sans-serif;
+}
+
+.vid-info h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+.vid-info a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    transition: .6s background;
+    border-bottom: none;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .video-foreground {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .video-foreground {
+        width: 300%;
+        left: -100%;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .vid-info {
+        width: 50%;
+        padding: .5rem;
+    }
+    .vid-info h1 {
+        margin-bottom: .2rem;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .vid-info .acronym {
+        display: none;
+    }
 }

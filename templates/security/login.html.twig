@@ -11,7 +11,9 @@
             <!-- Title -->
             <div class="bo-login-sideL-title">
                 <a href="/">
-                    <h1>The Flow</h1>
+                    {% for screen in splash %}
+                        <h1>{{ screen.Title}}</h1>
+                    {% endfor %}
                     <p>By Johan SUTTER</p>
                 </a>
             </div>
