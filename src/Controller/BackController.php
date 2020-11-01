@@ -14,9 +14,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BackController extends AbstractController
@@ -28,6 +25,9 @@ class BackController extends AbstractController
      */
     public function splashPage(Splash $splash = null, SplashRepository $repo,  Request $request, EntityManagerInterface $manager)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+ 
+
         if(!$splash) 
         {
             $splash = new Splash(); 
@@ -69,6 +69,8 @@ class BackController extends AbstractController
      */
     public function segmentView(SegmentsRepository $repo)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $segments = $repo->findBy(['deleted'=>false]);
 
         $trash = $repo->findBy(['deleted'=>true]);
@@ -86,6 +88,8 @@ class BackController extends AbstractController
      */
     public function segmentForm(Segments $segments = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         if(!$segments) {
         $segments = new Segments(); 
         }
@@ -143,6 +147,8 @@ class BackController extends AbstractController
      */
     public function segmentBin($id)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entityManager = $this->getDoctrine()->getManager();
         $delete = $entityManager->getRepository(segments::class)->find($id);
 
@@ -162,6 +168,8 @@ class BackController extends AbstractController
      */
     public function removeFromTrash($id)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entityManager = $this->getDoctrine()->getManager();
         $remove = $entityManager->getRepository(segments::class)->find($id);
 
@@ -181,6 +189,8 @@ class BackController extends AbstractController
      */
     public function deleteFromTrash($id)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entityManager = $this->getDoctrine()->getManager();
         $permDelete = $entityManager->getRepository(segments::class)->find($id);
 
@@ -200,6 +210,8 @@ class BackController extends AbstractController
      */
     public function TrashAll()
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entityManager = $this->getDoctrine()->getManager();
         $deleteAll = $entityManager->getRepository(segments::class)->findBy(['deleted'=>true]);
 
@@ -216,6 +228,8 @@ class BackController extends AbstractController
      */
     public function segmentTrash(SegmentsRepository $repo)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $trash = $repo->findBy(['deleted'=>true]);
 
             if ($trash == true) 
