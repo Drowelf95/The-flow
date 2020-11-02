@@ -15,9 +15,10 @@ class ProfilType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('password', PasswordType::class)
-            ->add('new_password', RepeatedType::class)
-        ;
+            //->add('password', PasswordType::class)
+            ->add('new_password', RepeatedType::class, [
+                'type' => PasswordType::class
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

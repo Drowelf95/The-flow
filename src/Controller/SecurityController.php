@@ -24,21 +24,30 @@ class SecurityController extends AbstractController
             $profil = new Profil(); 
         }
 
+        $oldPass = $profil->getPassword();
+
         $form = $this->createForm(ProfilType::class, $profil);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) 
         {
+            $newPass = $form["new_password"]->getData();
+
             $profil->setCreatedAt(new \DateTime());
 
-            $hash = $encoder->encodePassword($profil, $profil->getPassword());
+            $hash = $encoder->encodePassword($profil, $newPass);
             $profil->setPassword($hash);
 
             $manager->persist($profil);
             $manager->flush();
 
-            return $this->redirectToRoute('segmentView');
+            $this->addFlash(
+                'success',
+                'Your informations have been updeated.'
+            );
+
+            return $this->redirect($request->getUri());
         }
 
         return $this->render('security/Profil.html.twig', [

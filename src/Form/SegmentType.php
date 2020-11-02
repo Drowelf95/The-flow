@@ -21,7 +21,7 @@ class SegmentType extends AbstractType
             ->add('link1', TextType::class)
             ->add('title2', TextType::class)
             ->add('message2', TextareaType::class)
-            ->add('link2', FileType::class, [
+            ->add('link2', TextType::class, [
                 'data_class' => null,
                 'required'=>false
                 ])

@@ -1,0 +1,15 @@
+            $oldPassField = $form["password"]->getData();
+            $hash1 = $encoder->encodePassword($profil, $oldPassField);
+            
+            var_dump($oldPass);
+            var_dump($hash1);
+
+            var_dump($newPass);
+            if($oldPass !== $oldPassField) {
+                $this->addFlash(
+                    'danger',
+                    'Your entered the wrong password.'
+                );
+    
+                return $this->redirect($request->getUri()); 
+            }

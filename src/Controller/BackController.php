@@ -86,13 +86,15 @@ class BackController extends AbstractController
      * @Route("/segmentAdd", name="segmentAdd")
      * @Route("/segmentEdit/{id}", name="segmentEdit")
      */
-    public function segmentForm(Segments $segments = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger)
+    public function segmentForm(Segments $segments = null, SegmentsRepository $repo, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         if(!$segments) {
         $segments = new Segments(); 
         }
+
+        $updates = $repo->find($segments);
 
         $form = $this->createForm(SegmentType::class, $segments);
 
@@ -138,7 +140,56 @@ class BackController extends AbstractController
         
         return $this->render('back/segmentForm.html.twig', [
             'formSegment' => $form->createView(),
-            'editMode' => $segments->getId() !==null
+            'editMode' => $segments->getId() !==null,
+            'updates' => $updates
+        ]);
+    }
+
+    /**
+     * @Route("/segmentImgT1/{id}", name="segmentImgTrash1")
+     */
+    public function segmentImgTrash(Segments $segments, EntityManagerInterface $manager, Request $request)
+    {
+        $segments->setLinkS1(null);
+        $manager->persist($segments);
+        $manager->flush();
+
+        print_r($segments);
+
+        return $this->redirectToRoute('segmentEdit', [
+            'id' => $segments->getId()
+        ]);
+    }
+
+        /**
+     * @Route("/segmentImgT2/{id}", name="segmentImgTrash2")
+     */
+    public function segmentImgTrash2(Segments $segments, EntityManagerInterface $manager, Request $request)
+    {
+        $segments->setLinkS2(null);
+        $manager->persist($segments);
+        $manager->flush();
+
+        print_r($segments);
+
+        return $this->redirectToRoute('segmentEdit', [
+            'id' => $segments->getId()
+        ]);
+    }
+
+        /**
+     * @Route("/segmentImgT3/{id}", name="segmentImgTrash3")
+     */
+    public function segmentImgTrash3(Segments $segments, EntityManagerInterface $manager, Request $request)
+    {
+        $segments->setLinkS3(null);
+        $manager->persist($segments);
+        $manager->flush();
+
+        print_r($segments);
+
+        return $this->redirectToRoute('segmentEdit', [
+            'id' => $segments->getId()
         ]);
     }
 

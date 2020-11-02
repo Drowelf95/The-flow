@@ -94,40 +94,46 @@
       <li class="nav-item" role="presentation">
         <a class="nav-link" id="pills-slider-tab" data-toggle="pill" href="#pills-slider" role="tab" aria-controls="pills-slider" aria-selected="false">Slider</a>
       </li>
-      <li class="nav-item" role="presentation">
+      {# <li class="nav-item" role="presentation">
         <a class="nav-link disabled" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab" aria-controls="pills-images" aria-selected="false">Image</a>
-      </li>
+      </li> #}
     </ul>
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
         <div class="form-group">
           <label for="exampleInputPassword1">ID of the youtube video</label>
-          {{ form_errors(formSegment.link3) }}
-          {{ form_widget(formSegment.link3) }}
+          {{ form_errors(formSegment.link2) }}
+          {{ form_widget(formSegment.link2) }}
           <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the ID here.</small>
         </div>
       </div>
       <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-slider-tab">
         
-        <div class="bo-mediaPreview">
-          <div class="bo-media-grid">
-            <p>Image 01</p>
-            <img src="{{ asset('img/floppy.png') }}">
-            <button type="button" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</button>    
-          </div>
+          <div class="bo-mediaPreview">
+            {% if  updates.linkS1  %}
+              <div class="bo-media-grid">
+                <p>Image 01</p>
+                <img src="{{ asset('img/' ~ updates.linkS1 ) }}">
+                <a href="{{ path('segmentImgTrash1', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
+              </div>
+            {% endif %}
 
-          <div class="bo-media-grid">
-            <p>Image 02</p>
-            <img src="{{ asset('img/floppy.png') }}">
-            <button type="button" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</button>    
-          </div>
+            {% if  updates.linkS2  %}
+              <div class="bo-media-grid">
+                <p>Image 02</p>
+                <img src="{{ asset('img/' ~ updates.linkS2 ) }}">
+                <a href="{{ path('segmentImgTrash2', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>     
+              </div>
+            {% endif %}
 
-          <div class="bo-media-grid">
-            <p>Image 03</p>
-            <img src="{{ asset('img/floppy.png') }}">
-            <button type="button" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</button>    
+            {% if  updates.linkS3  %}
+              <div class="bo-media-grid">
+                <p>Image 03</p>
+                <img src="{{ asset('img/' ~ updates.linkS3 ) }}">
+                <a href="{{ path('segmentImgTrash3', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
+              </div>
+            {% endif %}
           </div>
-        </div>
         
         <div class="form-group">
           <label for="segment_link_s1">Select image 01</label>
@@ -148,8 +154,8 @@
       <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
         <div class="form-group">
           <label for="exampleInputPassword1">Select image</label>
-          {{ form_errors(formSegment.link2) }}
-          {{ form_widget(formSegment.link2) }}
+          {{ form_errors(formSegment.link3) }}
+          {{ form_widget(formSegment.link3) }}
         </div>
       </div>
     </div>
@@ -158,7 +164,7 @@
       <button type="submit" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
     {% else %}
       <button type="submit" class="btn btn-success">Publish</button>
-    {% endif%}
+    {% endif %}
   {{ form_end(formSegment)}}
 
 {% endblock %}

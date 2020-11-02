@@ -41,12 +41,6 @@ class Profil implements UserInterface
      */
     public $new_password;
     
-    /**
-     * @Assert\Length(min="10", minMessage="Your password must be at least 10 characters long.")
-     * @Assert\EqualTo(propertyPath="new_password", message="The new password and confirmation password do not match.")
-     */
-    public $confirm_password;
-
     public function getId(): ?int
     {
         return $this->id;
