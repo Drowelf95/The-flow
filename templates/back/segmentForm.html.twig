@@ -110,28 +110,30 @@
       <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-slider-tab">
         
           <div class="bo-mediaPreview">
-            {% if  updates.linkS1  %}
-              <div class="bo-media-grid">
-                <p>Image 01</p>
-                <img src="{{ asset('img/' ~ updates.linkS1 ) }}">
-                <a href="{{ path('segmentImgTrash1', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
-              </div>
-            {% endif %}
+            {% if  updates %}
+              {% if  updates.linkS1  %}
+                <div class="bo-media-grid">
+                  <p>Image 01</p>
+                  <img src="{{ asset('img/' ~ updates.linkS1 ) }}">
+                  <a href="{{ path('segmentImgTrash1', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
+                </div>
+              {% endif %}
 
-            {% if  updates.linkS2  %}
-              <div class="bo-media-grid">
-                <p>Image 02</p>
-                <img src="{{ asset('img/' ~ updates.linkS2 ) }}">
-                <a href="{{ path('segmentImgTrash2', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>     
-              </div>
-            {% endif %}
+              {% if  updates.linkS2  %}
+                <div class="bo-media-grid">
+                  <p>Image 02</p>
+                  <img src="{{ asset('img/' ~ updates.linkS2 ) }}">
+                  <a href="{{ path('segmentImgTrash2', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>     
+                </div>
+              {% endif %}
 
-            {% if  updates.linkS3  %}
-              <div class="bo-media-grid">
-                <p>Image 03</p>
-                <img src="{{ asset('img/' ~ updates.linkS3 ) }}">
-                <a href="{{ path('segmentImgTrash3', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
-              </div>
+              {% if  updates.linkS3  %}
+                <div class="bo-media-grid">
+                  <p>Image 03</p>
+                  <img src="{{ asset('img/' ~ updates.linkS3 ) }}">
+                  <a href="{{ path('segmentImgTrash3', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
+                </div>
+              {% endif %}
             {% endif %}
           </div>
         

@@ -25,7 +25,10 @@ class pageBehavior {
 
     smothFade() {
 
-        var distance = $('#scroll-to').offset().top;
+        let scrollID = $('.scrollTo').attr('id')
+        scrollID = scrollID.replace('scroll-to-', '')
+
+        let distance = $('#scroll-to-' + scrollID).offset().top;
 
         $(window).scroll(function() {
             if ($(this).scrollTop() >= distance) {
@@ -37,9 +40,7 @@ class pageBehavior {
                 $('#title-' + titleID).removeClass('dispNone');
                 $('#title-' + titleID).addClass('animated');
                 $('#title-' + titleID).addClass('fadeInLeft');
-            }
-
-            if ($(this).scrollTop() <= distance) {
+            } else if ($(this).scrollTop() <= distance) {
                 $('.fv-scrollUp-Cont').fadeOut('fast');
             }
         });

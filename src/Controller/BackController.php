@@ -91,10 +91,11 @@ class BackController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         if(!$segments) {
-        $segments = new Segments(); 
+            $segments = new Segments(); 
+            $updates = null;
+        } else {
+            $updates = $repo->find($segments);
         }
-
-        $updates = $repo->find($segments);
 
         $form = $this->createForm(SegmentType::class, $segments);
 
@@ -104,15 +105,15 @@ class BackController extends AbstractController
         {
             /** @var UploadedFile $link1 */
             $link1 = $form->get('link_s1')->getData();
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
+            $link2 = $form->get('link_s2')->getData();
+            $link3 = $form->get('link_s3')->getData();
+            
+
             if ($link1) {
                 $originalFilename = pathinfo($link1->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$link1->guessExtension();
 
-                // Move the file to the directory where brochures are stored
                 try {
                     $link1->move(
                         $this->getParameter('links_directory'),
@@ -121,8 +122,39 @@ class BackController extends AbstractController
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
-
                 $segments->setlinkS1($newFilename);
+            }
+
+            if ($link2) {
+                $originalFilename = pathinfo($link2->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$link2->guessExtension();
+
+                try {
+                    $link2->move(
+                        $this->getParameter('links_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                $segments->setlinkS2($newFilename);
+            }
+
+            if ($link3) {
+                $originalFilename = pathinfo($link3->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$link3->guessExtension();
+
+                try {
+                    $link3->move(
+                        $this->getParameter('links_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                $segments->setlinkS3($newFilename);
             }
 
             $segments->setCreatedAt(new \DateTime());
@@ -150,6 +182,8 @@ class BackController extends AbstractController
      */
     public function segmentImgTrash(Segments $segments, EntityManagerInterface $manager, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $segments->setLinkS1(null);
         $manager->persist($segments);
         $manager->flush();
@@ -166,6 +200,8 @@ class BackController extends AbstractController
      */
     public function segmentImgTrash2(Segments $segments, EntityManagerInterface $manager, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $segments->setLinkS2(null);
         $manager->persist($segments);
         $manager->flush();
@@ -182,6 +218,8 @@ class BackController extends AbstractController
      */
     public function segmentImgTrash3(Segments $segments, EntityManagerInterface $manager, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $segments->setLinkS3(null);
         $manager->persist($segments);
         $manager->flush();

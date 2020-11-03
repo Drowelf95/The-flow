@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
@@ -59,14 +60,17 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="Login")
      */
-    public function Login(SplashRepository $repo)
+    public function Login(SplashRepository $repo, AuthenticationUtils $authenticationUtils)
     {
 
         $splash = $repo->findAll();
+
+        $error = $authenticationUtils->getLastAuthenticationError();
         
         return $this->render('security/Login.html.twig', [
             'controller_name' => 'BackController',
-            'splash' => $splash
+            'splash' => $splash,
+            'error' => $error
         ]);
     }
 

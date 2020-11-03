@@ -53,7 +53,7 @@
 <div id="firstAnchor" class="anchor"></div>
     <section class="wrapper divider">
         {% for screen in splash %}
-            <h4 id ="scroll-to">{{ screen.Title }}</h4>
+            <h4 class="scrollTo" id="scroll-to-{{ segment.id }}">{{ screen.Title }}</h4>
         {% endfor %}
 
         <p>Selected <br> part</p>
@@ -68,7 +68,7 @@
     <section class="wrapper fv-fpart">
         <div class="video-background">
             <div class="video-foreground">
-                <iframe src="https://www.youtube.com/embed/{{ segment.link1 }}?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist={{ segment.link1 }}" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/{{ segment.link1 }}?controls=0&showinfo=0&rel=0&autoplay=1&hd=1&loop=1&mute=1&playlist={{ segment.link1 }}" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
         <h2 class="title" id="title-{{ segment.id }}">{{ segment.title1 }}</h2>
@@ -91,13 +91,20 @@
             <p class="column-wrap">{{ segment.message2 }}</p>
         </div>
 
-        {% if  segment.link2  %}
+        <!--Video-->
+        {% if segment.link2  %}
             <div class="fv-spart-mVideo">
-                <iframe width="760" height="549" src="https://www.youtube.com/embed/{{ segment.link1 }}?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist={{ segment.link1 }}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="760" height="549" src="https://www.youtube.com/embed/{{ segment.link1 }}?controls=0&showinfo=0&rel=0&autoplay=1&hd=1&loop=1&mute=1&playlist={{ segment.link1 }}" frameborder="0" allowfullscreen></iframe>
             </div>
         {% endif %}
 
-        {% if  segment.linkS1  %}
+        <!--Spacer-->
+        {% if segment.link2 and segment.linkS1 %}
+            <div class="fv-spacer"></div>
+        {% endif %}
+
+        <!--Slider-->
+        {% if segment.linkS1  %}
             <div class="fv-spart-mSlider">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">

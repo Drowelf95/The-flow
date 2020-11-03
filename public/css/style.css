@@ -92,6 +92,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .bo-login-conatiner {
@@ -398,15 +399,17 @@ h1 {
 }
 
 .fv-spart-mSlider {
-    width: 50%;
+    width: 60%;
     height: auto;
-    border: 20px solid lightgrey;
-    border-radius: 10px;
 }
 
 .fv-spart-mSlider,
 .fv-spart-mVideo {
     margin: 20px;
+}
+
+.fv-spacer {
+    height: 50px;
 }
 
 
