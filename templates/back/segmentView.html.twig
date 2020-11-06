@@ -50,13 +50,13 @@
 
         <div class="bo-segView-row-title">
             <div class="row">
-                <div class="col-4">
+                <div class="col-4 col-sm-2 col-lg-4">
                 <label>Titles</label>
                 </div>
-                <div class="col-4">
+                <div class="col-4 col-sm-2 col-lg-4">
                 <label>Last update</label>
                 </div>
-                <div class="col">
+                <div class="col col-sm-2 col-lg-4">
                 <label>Options</label>
                 </div>
             </div>
@@ -65,13 +65,13 @@
         {% for segment in segments %}
             <div class="bo-segView-row">
                 <div class="row">
-                    <div class="col bo-segView-row-text">
+                    <div class="col col-sm-2 col-lg-4 bo-segView-row-text">
                         <h3>{{ segment.title1 }}</h3>
                     </div>
-                    <div class="col bo-segView-row-text">
+                    <div class="col col-sm-2 col-lg-4 bo-segView-row-text bo-segView-row-date">
                         <p>{{ segment.createdAt| date('d/m/Y') }} at {{ segment.createdAt| date('H:i') }}</p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 col-sm-2 col-lg-4">
                         <div class="bo-segView-btnGroup">
                             <form action="{{ path('segmentEdit', {'id':segment.id}) }}" method="GET">
                                 <button type="submit" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>

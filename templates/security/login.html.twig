@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 bo-login-sideL">
+        <div class="col-12 col-md-4 col-lg-3 bo-login-sideL">
             
             <!-- Title -->
             <div class="bo-login-sideL-title">
@@ -33,14 +33,14 @@
         </div>
 
         <!-- Forms -->
-        <div class="col bo-login-sideR">
+        <div class="col-12 col-md col-lg bo-login-sideR">
 
             <!-- Alerts -->
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
             
-            <div class="col-3 bo-login-conatiner">
+            <div class="col-10 col-md-9 col-lg-4 bo-login-conatiner">
                 <h2>Sign In</h2>
                 <form action="{{ path('Login') }}" method="post">
                     <div class="form-group">
@@ -52,10 +52,6 @@
                         <label>Password</label>
                         <input type="password" class="form-control" required name="_password">
                     </div>
-                    {# <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="remember_me" name="_remember_me">
-                        <label class="form-check-label" for="remember_me">Remember me</label>
-                    </div> #}
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" id="wait-btn"><i id="wait-faw" class="fas fa-unlock-alt"></i>Login</button>
                     </div>

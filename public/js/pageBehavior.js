@@ -6,7 +6,6 @@ class pageBehavior {
     }
 
     bootstrapFunc() {
-
         //display file path in input Files
         $('.custom-file-input').on('change', function(event) {
             var inputFile = event.currentTarget;
@@ -18,18 +17,18 @@ class pageBehavior {
         //display tootips
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
-        })
+        });
 
+        //display waiting animation
         $('#wait-btn').on('click', e => {
             $('#wait-faw').removeClass("fab fa-firstdraft fa-paper-plane fa-unlock-alt");
             $('#wait-faw').addClass("fas fa-spinner fa-spin");
-        })
+        });
 
 
     }
 
     smothFade() {
-
         let scrollID = $('.scrollTo').attr('id')
         scrollID = scrollID.replace('scroll-to-', '')
 
