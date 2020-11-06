@@ -1,0 +1,56 @@
+/*Minor breakpoint*/
+
+@media screen and (max-width: 1600px) {}
+
+
+/*Minor breakpoint*/
+
+@media screen and (max-width: 1300px) {}
+
+
+/*Major breakpoint*/
+
+@media screen and (max-width: 1024px) {
+    .splash-text-container {
+        width: 70%;
+    }
+    .splash-text-container h3 {
+        font-size: 2rem;
+    }
+    h1 {
+        font-size: 12rem;
+    }
+    .icon-group {
+        font-size: 2.5rem;
+    }
+    .divider {
+        height: 40vh;
+    }
+    .fv-fpart-message {
+        font-size: 1.5rem;
+        width: 100%;
+    }
+    .fv-fpart .column-wrap {
+        width: 60%;
+        padding: 50px;
+        column-count: 2;
+    }
+    .fv-spart h2 {
+        font-size: 3rem;
+    }
+    .fv-spart .column-wrap {
+        font-size: 1.5rem;
+        width: 90%;
+        column-count: 1;
+    }
+}
+
+
+/*Major breakpoint*/
+
+@media screen and (max-width: 768px) {}
+
+
+/*Minor breakpoint*/
+
+@media screen and (max-width: 480px) {}

@@ -114,7 +114,7 @@
               {% if  updates.linkS1  %}
                 <div class="bo-media-grid">
                   <p>Image 01</p>
-                  <img src="{{ asset('img/' ~ updates.linkS1 ) }}">
+                  <img src="{{ asset('img/uploads/' ~ updates.linkS1 ) }}">
                   <a href="{{ path('segmentImgTrash1', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
                 </div>
               {% endif %}
@@ -122,7 +122,7 @@
               {% if  updates.linkS2  %}
                 <div class="bo-media-grid">
                   <p>Image 02</p>
-                  <img src="{{ asset('img/' ~ updates.linkS2 ) }}">
+                  <img src="{{ asset('img/uploads/' ~ updates.linkS2 ) }}">
                   <a href="{{ path('segmentImgTrash2', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>     
                 </div>
               {% endif %}
@@ -130,7 +130,7 @@
               {% if  updates.linkS3  %}
                 <div class="bo-media-grid">
                   <p>Image 03</p>
-                  <img src="{{ asset('img/' ~ updates.linkS3 ) }}">
+                  <img src="{{ asset('img/uploads/' ~ updates.linkS3 ) }}">
                   <a href="{{ path('segmentImgTrash3', {'id':updates.id}) }}" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i>Delete</a>    
                 </div>
               {% endif %}
@@ -163,9 +163,9 @@
     </div>
 
     {% if editMode  %}
-      <button type="submit" class="btn btn-warning"><i class="fab fa-firstdraft"></i>Edit</button>
+      <button type="submit" class="btn btn-warning" id="wait-btn"><i id="wait-faw" class="fab fa-firstdraft"></i>Edit</button>
     {% else %}
-      <button type="submit" class="btn btn-success">Publish</button>
+      <button type="submit" class="btn btn-success" id="wait-btn"><i id="wait-faw" class="fas fa-paper-plane"></i>Publish</button>
     {% endif %}
   {{ form_end(formSegment)}}
 

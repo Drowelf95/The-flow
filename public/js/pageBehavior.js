@@ -20,6 +20,11 @@ class pageBehavior {
             $('[data-toggle="tooltip"]').tooltip()
         })
 
+        $('#wait-btn').on('click', e => {
+            $('#wait-faw').removeClass("fab fa-firstdraft fa-paper-plane fa-unlock-alt");
+            $('#wait-faw').addClass("fas fa-spinner fa-spin");
+        })
+
 
     }
 

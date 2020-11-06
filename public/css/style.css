@@ -583,13 +583,8 @@ h1 {
     animation-name: fadeInLeft;
 }
 
-animation-name: fadeInDown;
 
 /* Common */
-
-.test-bck {
-    background-color: hotpink;
-}
 
 i {
     margin-right: 10px;

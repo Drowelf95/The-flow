@@ -184,6 +184,9 @@ class BackController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $name = $segments->getlinkS1(); 
+        unlink($this->getParameter('links_directory'). '/'.$name);
+
         $segments->setLinkS1(null);
         $manager->persist($segments);
         $manager->flush();
@@ -202,6 +205,9 @@ class BackController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $name = $segments->getlinkS2(); 
+        unlink($this->getParameter('links_directory'). '/'.$name);
+
         $segments->setLinkS2(null);
         $manager->persist($segments);
         $manager->flush();
@@ -219,6 +225,9 @@ class BackController extends AbstractController
     public function segmentImgTrash3(Segments $segments, EntityManagerInterface $manager, Request $request)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $name = $segments->getlinkS3(); 
+        unlink($this->getParameter('links_directory'). '/'.$name);
 
         $segments->setLinkS3(null);
         $manager->persist($segments);
