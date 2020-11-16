@@ -55,7 +55,7 @@
         {% endfor %}
 
         <p>Selected <br> part</p>
-        <h3>{{ segment.part }}</h3>
+        <h3 data-sal="flip-up" data-sal-delay="200" data-sal-duration="700">{{ segment.part }}</h3>
         
         <div class="scroll-wrapper">
             <div class="scroll-line"></div>
@@ -69,7 +69,7 @@
                 <iframe src="https://www.youtube.com/embed/{{ segment.link1 }}?controls=0&showinfo=0&rel=0&autoplay=1&hd=1&loop=1&mute=1&playlist={{ segment.link1 }}" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-        <h2>{{ segment.title1 }}</h2>
+        <h2 data-sal="slide-right" data-sal-delay="300" data-sal-duration="1600">{{ segment.title1 }}</h2>
         <div class="fv-fpart-message">
             <p class="column-wrap">{{ segment.message2 }}</p>
         </div>
