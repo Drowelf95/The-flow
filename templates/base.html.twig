@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/mediaq.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/sal/sal.css') }}"/>
 
         <link rel="icon" href="{{ asset('img/floppy.png') }}" />
 
@@ -21,6 +22,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/pageBehavior.js') }}"></script>
+        <script src="{{ asset('js/sal/sal.js') }}"></script>
 
         {% block javascripts %}
         
@@ -28,6 +30,7 @@
             $(document).ready(function(e) {
                 const InitpageBehavior = new pageBehavior();
             });
+            sal();
         </script>
         
         {% endblock %}
