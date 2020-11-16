@@ -1,7 +1,7 @@
 class pageBehavior {
     constructor() {
         this.bootstrapFunc()
-        this.smothFade()
+        $(window).scroll(e => this.smothFade())
         this.smothScroll()
     }
 
@@ -34,20 +34,18 @@ class pageBehavior {
 
         let distance = $('#scroll-to-' + scrollID).offset().top;
 
-        $(window).scroll(function() {
-            if ($(this).scrollTop() >= distance) {
-                $('.fv-scrollUp-Cont').fadeIn('slow');
+        if ($(this).scrollTop() >= distance) {
+            $('.fv-scrollUp-Cont').fadeIn('slow');
 
-                let titleID = $('.title').attr('id')
-                titleID = titleID.replace('title-', '')
+            let titleID = $('.title').attr('id')
+            titleID = titleID.replace('title-', '')
 
-                $('#title-' + titleID).removeClass('dispNone');
-                $('#title-' + titleID).addClass('animated');
-                $('#title-' + titleID).addClass('fadeInLeft');
-            } else if ($(this).scrollTop() <= distance) {
-                $('.fv-scrollUp-Cont').fadeOut('fast');
-            }
-        });
+            $('#title-' + titleID).removeClass('dispNone');
+            $('#title-' + titleID).addClass('animated');
+            $('#title-' + titleID).addClass('fadeInLeft');
+        } else if ($(this).scrollTop() <= distance) {
+            $('.fv-scrollUp-Cont').fadeOut('fast');
+        }
     }
 
     smothScroll() {
