@@ -17,12 +17,10 @@
 {% for screen in splash %}
 <div id="homeAnchor" class="anchor"></div>
     <section class="wrapper">
-    <div class="video-background">
-        <div class="video-foreground">
-        <iframe src="https://www.youtube.com/embed/{{ screen.Link }}?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist={{ screen.Link }}" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://www.youtube.com/embed/{{ screen.Link }}?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist={{ screen.Link }}" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
         <div class="overlay"></div>
         <div class="splash-text">
@@ -49,8 +47,8 @@
     </section>
 {% endfor %}
 
-{% for segment in segments %}
 <div id="firstAnchor" class="anchor"></div>
+{% for segment in segments %}
     <section class="wrapper divider">
         {% for screen in splash %}
             <h4 class="scrollTo" id="scroll-to-{{ segment.id }}">{{ screen.Title }}</h4>
@@ -71,7 +69,7 @@
                 <iframe src="https://www.youtube.com/embed/{{ segment.link1 }}?controls=0&showinfo=0&rel=0&autoplay=1&hd=1&loop=1&mute=1&playlist={{ segment.link1 }}" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-        <h2 class="title" id="title-{{ segment.id }}">{{ segment.title1 }}</h2>
+        <h2 class="title" data-sal="fade" id="title-{{ segment.id }}">{{ segment.title1 }}</h2>
         <div class="fv-fpart-message">
             <p class="column-wrap">{{ segment.message2 }}</p>
         </div>

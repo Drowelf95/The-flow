@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/profil/{id}", name="Profil")
+     * @Route("/profile/{id}", name="Profile")
      */
     public function profil(Profil $profil = null, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
             return $this->redirect($request->getUri());
         }
 
-        return $this->render('security/Profil.html.twig', [
+        return $this->render('security/profile.html.twig', [
             'controller_name' => 'BackController',
             'form' => $form->createView()
         ]);
@@ -67,7 +67,7 @@ class SecurityController extends AbstractController
 
         $error = $authenticationUtils->getLastAuthenticationError();
         
-        return $this->render('security/Login.html.twig', [
+        return $this->render('security/login.html.twig', [
             'controller_name' => 'BackController',
             'splash' => $splash,
             'error' => $error
