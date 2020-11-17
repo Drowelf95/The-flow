@@ -191,8 +191,6 @@ class BackController extends AbstractController
         $manager->persist($segments);
         $manager->flush();
 
-        print_r($segments);
-
         return $this->redirectToRoute('segmentEdit', [
             'id' => $segments->getId()
         ]);
@@ -212,8 +210,6 @@ class BackController extends AbstractController
         $manager->persist($segments);
         $manager->flush();
 
-        print_r($segments);
-
         return $this->redirectToRoute('segmentEdit', [
             'id' => $segments->getId()
         ]);
@@ -232,8 +228,6 @@ class BackController extends AbstractController
         $segments->setLinkS3(null);
         $manager->persist($segments);
         $manager->flush();
-
-        print_r($segments);
 
         return $this->redirectToRoute('segmentEdit', [
             'id' => $segments->getId()
