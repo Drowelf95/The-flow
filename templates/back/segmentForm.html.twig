@@ -137,21 +137,33 @@
             {% endif %}
           </div>
         
-        <div class="form-group">
-          <label for="segment_link_s1">Select image 01</label>
-          {{ form_errors(formSegment.link_s1) }}
-          {{ form_widget(formSegment.link_s1) }}
-        </div>
-        <div class="form-group">
-          <label>Select image 02</label>
-          {{ form_errors(formSegment.link_s2) }}
-          {{ form_widget(formSegment.link_s2) }}
-        </div>
-        <div class="form-group">
-          <label>Select image 03</label>
-          {{ form_errors(formSegment.link_s3) }}
-          {{ form_widget(formSegment.link_s3) }}
-        </div>
+        {% if not updates.linkS1 %}
+          <div class="form-group">
+            <label for="segment_link_s1">Select image 01</label>
+            {{ form_errors(formSegment.link_s1) }}
+            {{ form_widget(formSegment.link_s1) }}
+          </div>
+        {% else %}
+            {% do formSegment.link_s1.setRendered() %}
+        {% endif %}
+        {% if not updates.linkS2 %}
+          <div class="form-group">
+            <label>Select image 02</label>
+            {{ form_errors(formSegment.link_s2) }}
+            {{ form_widget(formSegment.link_s2) }}
+          </div>
+        {% else %}
+            {% do formSegment.link_s2.setRendered() %}
+        {% endif %}
+        {% if not updates.linkS3 %}
+          <div class="form-group">
+            <label>Select image 03</label>
+            {{ form_errors(formSegment.link_s3) }}
+            {{ form_widget(formSegment.link_s3) }}
+          </div>
+        {% else %}
+            {% do formSegment.link_s3.setRendered() %}
+        {% endif %}
       </div>
       <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
         <div class="form-group">
