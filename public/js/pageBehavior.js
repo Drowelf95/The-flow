@@ -62,22 +62,4 @@ class pageBehavior {
             })
         });
     }
-
-    // smoothFade() {
-    //     let scrollID = $('.scrollTo').attr('id')
-    //     scrollID = scrollID.replace('scroll-to-', '')
-
-    //     let titleID = $('.title').attr('id')
-    //     titleID = titleID.replace('title-', '')
-
-    //     let distance = $('#scroll-to-' + scrollID).offset().top;
-
-    //     if ($(window).scrollTop() >= distance) {
-    //         console.log(titleID);
-    //     }
-
-    //     $('#title-' + titleID).removeClass('dispNone');
-    //     $('#title-' + titleID).addClass('animated');
-    //     $('#title-' + titleID).addClass('fadeInLeft');
-    // }
 }

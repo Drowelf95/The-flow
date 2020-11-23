@@ -348,9 +348,8 @@ h1 {
     position: absolute;
     top: 200px;
     left: 50px;
-    width: 50%;
+    width: 60%;
     height: 70vh;
-    overflow: hidden;
 }
 
 
@@ -386,6 +385,7 @@ h1 {
 .fv-spart-message {
     display: flex;
     justify-content: center;
+    text-align: justify;
 }
 
 .column-wrap {
@@ -478,6 +478,7 @@ h1 {
 .video-foreground,
 .video-background iframe {
     position: absolute;
+    border: none;
     top: 0;
     left: 0;
     width: 100%;

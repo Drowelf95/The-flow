@@ -163,7 +163,8 @@
     }
     .fv-fpart .column-wrap {
         width: 100%;
-        text-align: center;
+        text-align: justify;
+        hyphens: auto;
         padding: 50px;
         column-count: 1;
     }
@@ -174,7 +175,8 @@
     }
     .fv-spart .column-wrap {
         font-size: 1rem;
-        text-align: center;
+        text-align: justify;
+        hyphens: auto;
         width: 100%;
         column-count: 1;
     }
