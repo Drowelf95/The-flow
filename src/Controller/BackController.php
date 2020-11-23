@@ -162,12 +162,19 @@ class BackController extends AbstractController
             $manager->persist($segments);
             $manager->flush();
 
-            $this->addFlash(
-                'success',
-                'Your segment have been updeated.'
-            );
-
-            return $this->redirect($request->getUri());
+            if($updates) {
+                $this->addFlash(
+                    'success',
+                    'Your segment have been updeated.'
+                );
+                return $this->redirect($request->getUri());
+            } else {
+                $this->addFlash(
+                    'success',
+                    'Your segment have been published.'
+                );
+                return $this->redirectToRoute('segmentView');
+            }
         }
         
         return $this->render('back/segmentForm.html.twig', [
@@ -311,6 +318,11 @@ class BackController extends AbstractController
             $entityManager->remove($newDelete);
             $entityManager->flush();
         }
+
+        $this->addFlash(
+            'danger',
+            'The trash has been emptied.'
+        );
 
         return $this->redirectToRoute('segmentView');
     }
