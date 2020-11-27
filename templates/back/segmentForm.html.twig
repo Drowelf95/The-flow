@@ -59,9 +59,9 @@
       {{ form_widget(formSegment.message1, {'attr' : {'rows': "10"}}) }}
     </div>
     <div class="form-group">
-      <label>Link to the video</label>
+      <label>ID of the video</label>
       {{ form_errors(formSegment.link1) }}
-      {{ form_widget(formSegment.link1, {'attr' : {'placeholder': "http://www.youtube.com"}}) }}
+      {{ form_widget(formSegment.link1, {'attr' : {'placeholder': "ID of the youtube video"}}) }}
       <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the link here.</small>
     </div>
   </div>
@@ -103,7 +103,7 @@
         <div class="form-group">
           <label>ID of the youtube video</label>
           {{ form_errors(formSegment.link2) }}
-          {{ form_widget(formSegment.link2, {'attr' : {'placeholder': "http://www.youtube.com"}}) }}
+          {{ form_widget(formSegment.link2, {'attr' : {'placeholder': "ID of the youtube video"}}) }}
           <small id="emailHelp" class="form-text text-muted">Host the video on Youtube and past the ID here.</small>
         </div>
       </div>
@@ -164,6 +164,7 @@
         {% else %}
             {% do formSegment.link_s3.setRendered() %}
         {% endif %}
+        <small id="emailHelp" class="form-text text-muted">Files should not exceed 8Mo.</small>
       </div>
       <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
         <div class="form-group">

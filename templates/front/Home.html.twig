@@ -106,18 +106,18 @@
         <!--Slider-->
         {% if segment.linkS1  %}
             <div class="fv-spart-mSlider">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators{{ segment.id }}" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         {% if segment.linkS1 %}
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators{{ segment.id }}" data-slide-to="0" class="active"></li>
                         {% endif %}
 
                         {% if segment.linkS2 %}
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators{{ segment.id }}" data-slide-to="1"></li>
                         {% endif %}
                         
                         {% if segment.linkS3 %}
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators{{ segment.id }}" data-slide-to="2"></li>
                         {% endif %}
                         
                     </ol>
@@ -140,11 +140,11 @@
                             </div>
                         {% endif %}
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators{{ segment.id }}" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleIndicators{{ segment.id }}" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
