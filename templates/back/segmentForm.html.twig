@@ -160,17 +160,18 @@
             <label>Select image 03</label>
             {{ form_errors(formSegment.link_s3) }}
             {{ form_widget(formSegment.link_s3) }}
+            <small id="uploadlHelp" class="form-text text-muted">Files should not exceed 8Mo.</small>
           </div>
         {% else %}
             {% do formSegment.link_s3.setRendered() %}
         {% endif %}
-        <small id="emailHelp" class="form-text text-muted">Files should not exceed 8Mo.</small>
       </div>
       <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
         <div class="form-group">
           <label>Select image</label>
           {{ form_errors(formSegment.link3) }}
           {{ form_widget(formSegment.link3) }}
+          <small id="uploadlHelp" class="form-text text-muted">Files should not exceed 8Mo.</small>
         </div>
       </div>
     </div>
